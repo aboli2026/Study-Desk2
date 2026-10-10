@@ -1,0 +1,206 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+@theme {
+  --font-sans: 'Vazirmatn', 'Vazir', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-vazir: 'Vazirmatn', 'Vazir', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+:root {
+  font-family: 'Vazirmatn', 'Vazir', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  font-family: 'Vazirmatn', 'Vazir', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button, input, textarea, select, optgroup {
+  font-family: inherit;
+}
+
+[contenteditable]:empty:before {
+  content: attr(data-placeholder);
+  color: #9ca3af;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   iOS Jelly & Spring Physics Engine (GPU-Accelerated for Budget Devices)
+   ========================================================================== */
+
+:root {
+  --ios-spring-jelly: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --ios-spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ios-spring-smooth: cubic-bezier(0.32, 0.72, 0, 1);
+  --ios-spring-press: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 1. Tactile iOS Spring Button (ژله‌ای ملموس با بازگشت الاستیک) */
+.ios-spring-btn {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              background-color 0.2s ease,
+              color 0.2s ease,
+              border-color 0.2s ease;
+}
+
+.ios-spring-btn:hover:not(:disabled) {
+  transform: scale(1.05) translateZ(0);
+}
+
+.ios-spring-btn:active:not(:disabled) {
+  transform: scale(0.90) translateZ(0);
+  transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 2. Tool Capsule Item (دکمه‌های کپسول ابزار با جهش ژله‌ای) */
+.ios-spring-tool {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.2s ease,
+              color 0.2s ease,
+              box-shadow 0.25s ease;
+}
+
+.ios-spring-tool:hover:not(:disabled) {
+  transform: scale(1.08) translateZ(0);
+}
+
+.ios-spring-tool:active:not(:disabled) {
+  transform: scale(0.88) translateZ(0);
+  transition: transform 0.1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 3. Card Spring (برای کارت‌های کتابخانه، سایدبار و یادداشت‌ها) */
+.ios-spring-card {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.36s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.25s ease,
+              border-color 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.ios-spring-card:hover {
+  transform: translateY(-2px) scale(1.02) translateZ(0);
+}
+
+.ios-spring-card:active {
+  transform: scale(0.96) translateZ(0);
+  transition: transform 0.12s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 4. Origin Extend & Collapse (اکستند شدن پنجره و پاپ‌اور از جای دکمه و بسته شدن دوباره به جای خود) */
+.ios-origin-extend {
+  transform-origin: bottom center;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.24s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.ios-origin-extend-top {
+  transform-origin: top center;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.24s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* Active Open vs Closed State for expandable popovers */
+.ios-popover-open {
+  opacity: 1 !important;
+  transform: scale(1) translateY(0) translateZ(0) !important;
+  pointer-events: auto !important;
+}
+
+.ios-popover-closed {
+  opacity: 0 !important;
+  transform: scale(0.18) translateY(20px) translateZ(0) !important;
+  pointer-events: none !important;
+}
+
+.ios-popover-closed-top {
+  opacity: 0 !important;
+  transform: scale(0.18) translateY(-20px) translateZ(0) !important;
+  pointer-events: none !important;
+}
+
+/* 5. Keyframes for iOS Jelly Entry (ورود جهشی ژله‌ای ای‌او‌اس) */
+@keyframes ios-jelly-appear {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.65, 0.65, 1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.07, 1.07, 1);
+  }
+  80% {
+    transform: scale3d(0.97, 0.97, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.animate-ios-jelly {
+  animation: ios-jelly-appear 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Fullscreen modal jelly expand from center */
+@keyframes ios-modal-expand {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(18px);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.03) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-ios-modal {
+  animation: ios-modal-expand 0.36s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ios-spring-btn,
+  .ios-spring-tool,
+  .ios-spring-card,
+  .ios-origin-extend,
+  .ios-origin-extend-top,
+  .animate-ios-jelly,
+  .animate-ios-modal {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
